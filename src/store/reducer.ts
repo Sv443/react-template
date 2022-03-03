@@ -1,7 +1,7 @@
 import test from "./test";
 
 const root = {
-    test
+  test,
 };
 
 export default root;

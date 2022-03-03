@@ -14,9 +14,9 @@ let dispatch: Dispatch, store: EnhancedStore;
 const combinedReduces = combineReducers(reducer);
 
 const rootReducer: Reducer = (state, action) => {
-//   if (action.type === logout.toString()) {
-//     state = undefined;
-//   }
+  //   if (action.type === logout.toString()) {
+  //     state = undefined;
+  //   }
   return combinedReduces(state, action);
 };
 

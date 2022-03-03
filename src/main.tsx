@@ -6,15 +6,14 @@ import { AppDecorator } from "./AppDecorator";
 import { createTheme } from "./theme";
 
 var store = initStore({
-    initialState: {},
+  initialState: {},
 });
 
-render((
-    <AppDecorator {...{ createTheme }}>
-        <Provider {...{ store }}>
-            <App />
-        </Provider>
-    </AppDecorator>
-    ),
-    document.getElementById("root")
+render(
+  <AppDecorator {...{ createTheme }}>
+    <Provider {...{ store }}>
+      <App />
+    </Provider>
+  </AppDecorator>,
+  document.getElementById("root")
 );

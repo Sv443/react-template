@@ -18,8 +18,7 @@ export function AppDecorator({
   children,
   createTheme,
   useDarkMode = useDarkModeDefault,
-}: AppDecoratorProps)
-{
+}: AppDecoratorProps) {
   const darkModeBySwitch = useDarkMode();
   const darkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const theme = useMemo(

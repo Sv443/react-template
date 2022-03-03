@@ -1,3 +1,3 @@
 export interface Store {
-    test: string;
+  test: string;
 }

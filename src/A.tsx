@@ -2,8 +2,8 @@ import { Link } from "@mui/material";
 import { ReactNode } from "react";
 
 interface AProps {
-    href: string;
-    children: ReactNode;
+  href: string;
+  children: ReactNode;
 }
 
 /* eslint-disable react/prop-types */

@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import tsconfigPaths from 'vite-tsconfig-paths';
+import tsconfigPaths from "vite-tsconfig-paths";
 
 // https://vitejs.dev/config/
 export default async () =>
@@ -9,8 +9,5 @@ export default async () =>
       chunkSizeWarningLimit: 3000,
       sourcemap: true,
     },
-    plugins: [
-      react(),
-      tsconfigPaths(),
-    ],
+    plugins: [react(), tsconfigPaths()],
   });

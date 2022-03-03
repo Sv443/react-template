@@ -1,8 +1,3 @@
-interface TitleBarProps {
-    
-}
+interface TitleBarProps {}
 
-export function TitleBar({}: TitleBarProps)
-{
-
-}
+export function TitleBar({}: TitleBarProps) {}

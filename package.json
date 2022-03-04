@@ -1,6 +1,19 @@
 {
-  "name": "@pubcore/vite-mui",
+  "name": "@sv443/react-template",
+  "description": "TS React template using Vite & Material UI based on @pubcore/vite-mui",
   "version": "0.1.0",
+  "homepage": "https://github.com/Sv443/react-template#readme",
+  "repository": "https://github.com/Sv443/react-template.git",
+  "author": {
+    "name": "Sv443",
+    "url": "https://github.com/Sv443",
+    "email": "contact@sv443.net"
+  },
+  "bugs": "https://github.com/Sv443/react-template/issues",
+  "keywords": [ "react", "typescript", "material-ui", "vite", "template" ],
+  "engines": {
+    "npm": ">=7"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -15,6 +28,7 @@
     "eslint": "^7.26.0",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "rollup": "^2.69.1",
     "typescript": "^4.6.2",
     "vite": "^2.2.3",
     "vite-tsconfig-paths": "^3.4.1"

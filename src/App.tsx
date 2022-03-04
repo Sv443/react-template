@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import A from "./A";
 import { dispatch } from "./store";
 import { getTest, setTest } from "./store/test";
+import { TitleBar } from "./TitleBar";
 
 export default function App() {
   const [count, setCount] = useState(0);
@@ -21,26 +22,35 @@ export default function App() {
 
   return (
     <React.StrictMode>
-      <Box sx={{ margin: 2 }}>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-          }}
-        >
-          <Box sx={{ marginBottom: 1 }}>
-            <h2>Yo {count}</h2>
-            <Button onClick={() => setCount(count + 1)}>+1</Button>
+      <Box sx={{ display: "flex", flexDirection: "column" }}>
+        <TitleBar {...{ title: "Title yo" }}></TitleBar>
+        <Box sx={{ margin: 2 }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+            }}
+          >
+            <Box sx={{ margin: 1, marginBottom: 1 }}>
+              <h2>Yo {count}</h2>
+              <Button onClick={() => setCount(count + 1)} color="secondary">
+                +1
+              </Button>
+            </Box>
+
+            <Box sx={{ margin: 1 }}>
+              <h2>Store</h2>
+              <div>Value: {value}</div>
+              <TextField
+                onChange={testChanged}
+                defaultValue={value}
+                color="secondary"
+              ></TextField>
+            </Box>
           </Box>
 
-          <Box>
-            <h2>Store</h2>
-            <div>Value: {value}</div>
-            <TextField onChange={testChanged} defaultValue={value}></TextField>
-          </Box>
+          <A href="https://github.com/Sv443">Sv443</A>
         </Box>
-
-        <A href="https://github.com/Sv443">Sv443</A>
       </Box>
     </React.StrictMode>
   );

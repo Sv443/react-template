@@ -1,3 +1,9 @@
+## React Template
+
+TS React template using Vite & Material UI, originally based on [@pubcore/vite-mui](https://github.com/@pubcore/vite-mui)
+
+<br>
+
 ### Dependencies
 
 - [react](https://reactjs.org)

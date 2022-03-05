@@ -1,12 +1,5 @@
-import {
-  AppBar,
-  Box,
-  Button,
-  IconButton,
-  Toolbar,
-  Typography,
-} from "@mui/material";
-import { Menu, MenuOpen } from "@mui/icons-material";
+import { AppBar, Box, IconButton, Toolbar, Typography } from "@mui/material";
+import { Menu } from "@mui/icons-material";
 import { getSidebar, setSidebar } from "../store/sidebar";
 import { dispatch } from "../store";
 import { useSelector } from "react-redux";
@@ -29,11 +22,7 @@ export default function Titlebar({ title }: TitlebarProps) {
             onClick={() => dispatch(setSidebar(!sidebar))}
             sx={{ mr: 2 }}
           >
-            {sidebar ? (
-              <MenuOpen fontSize="medium" />
-            ) : (
-              <Menu fontSize="medium" />
-            )}
+            <Menu fontSize="medium" />
           </IconButton>
           <Typography noWrap={true} variant="h5">
             {title}

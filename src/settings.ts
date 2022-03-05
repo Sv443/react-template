@@ -2,7 +2,7 @@ import packageJson from "../package.json";
 
 const { version, description, homepage, author } = packageJson;
 
-export const settings = Object.freeze({
+export default Object.freeze({
   info: {
     name: "MyAppName",
     version,

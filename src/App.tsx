@@ -19,6 +19,8 @@ import { Dialog } from "./Dialogs";
 export default function App() {
   const [count, setCount] = useState(0);
 
+  const [selectedSidebarItm, setSelectedSidebarItm] = useState(-1);
+
   const sidebarItems: ReactNode[] = [];
 
   //#DEBUG
@@ -26,8 +28,16 @@ export default function App() {
     sidebarItems.push(
       <A href={`#itm-${i}`} target="_self" noDecoration>
         <MenuItem
-          sx={{ fontSize: 20 }}
-          onClick={debounce(() => dispatch(setSidebar(false)), 70)}
+          sx={{
+            fontSize: 20,
+            ...(selectedSidebarItm >= 0 && i === selectedSidebarItm
+              ? { backgroundColor: "#252525" }
+              : {}),
+          }}
+          onClick={debounce(() => {
+            dispatch(setSidebar(false));
+            setSelectedSidebarItm(i);
+          }, 70)}
         >
           Item {i}
         </MenuItem>

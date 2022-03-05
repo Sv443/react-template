@@ -11,11 +11,11 @@ import { getSidebar, setSidebar } from "../store/sidebar";
 import { dispatch } from "../store";
 import { useSelector } from "react-redux";
 
-interface TitleBarProps {
+interface TitlebarProps {
   title: string;
 }
 
-export function TitleBar({ title }: TitleBarProps) {
+export default function Titlebar({ title }: TitlebarProps) {
   const sidebar = useSelector(getSidebar);
 
   return (

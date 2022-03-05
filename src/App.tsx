@@ -2,8 +2,7 @@ import { Box, Button, MenuItem } from "@mui/material";
 import React, { ReactNode, useState } from "react";
 import A from "./A";
 import settings from "./settings";
-import { TitleBar } from "./TitleBar";
-import Sidebar from "./Sidebar";
+import { Sidebar, Titlebar } from "./Layout";
 import { dispatch } from "./store";
 import { setSidebar } from "./store/sidebar";
 import { debounce } from "lodash-es";
@@ -28,7 +27,7 @@ export default function App() {
   return (
     <React.StrictMode>
       <Box sx={{ display: "flex", flexDirection: "column" }}>
-        <TitleBar {...{ title: settings.info.name }}></TitleBar>
+        <Titlebar {...{ title: settings.info.name }}></Titlebar>
         <Sidebar>{sidebarItems}</Sidebar>
         <Box sx={{ margin: 2 }}>
           <Box>

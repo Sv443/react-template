@@ -9,8 +9,10 @@ var store = initStore({
   initialState: {},
 });
 
+const useDarkMode = () => true; // TODO: make togglable
+
 render(
-  <AppDecorator {...{ createTheme }}>
+  <AppDecorator {...{ createTheme, useDarkMode }}>
     <Provider {...{ store }}>
       <App />
     </Provider>

@@ -1,12 +1,12 @@
 import { Box } from "@mui/material";
 import type { ReactNode } from "react";
 
-export interface PageProps {
+export interface LayoutProps {
   appBar: ReactNode;
   sidebar: ReactNode;
 }
 
-export default function Page({ appBar, sidebar }: PageProps) {
+export default function Layout({ appBar, sidebar }: LayoutProps) {
   return (
     <Box
       component="div"

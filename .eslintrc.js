@@ -37,6 +37,7 @@ module.exports = {
     "comma-dangle": ["error", "always-multiline"],
     "array-bracket-newline": ["error", "consistent"],
     "function-paren-newline": ["error", "multiline"],
+    "no-unused-vars": ["error", "always"],
   },
   settings: {
     react: {

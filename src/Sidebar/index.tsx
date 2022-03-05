@@ -1,114 +1,53 @@
-import { ReactNode, useCallback } from "react";
-import {
-  MenuItem,
-  Tooltip,
-  useMediaQuery,
-  Drawer,
-  Box,
-  ListItemIcon,
-  useTheme,
-} from "@mui/material";
-import { useTranslation } from "react-i18next";
-import { NavLink } from "react-router-dom";
+import { Close } from "@mui/icons-material";
+import { Drawer, Grid, IconButton, Typography } from "@mui/material";
+import { Box } from "@mui/system";
+import { ReactNode } from "react";
+import { useSelector } from "react-redux";
+import { dispatch } from "../store";
+import { getSidebar, setSidebar } from "../store/sidebar";
 
-export interface Item {
-  name: string;
-  icon?: ReactNode;
-  to: string;
+interface SidebarProps {
+  children: ReactNode;
 }
-export interface SidbarProps {
-  items: Item[];
-  isOpen: boolean;
-  toggle: () => void;
-  close: () => void;
-}
-const DRAWER_WIDTH = 240;
-const CLOSED_DRAWER_WIDTH = 55;
 
-export default function Sidebar({ items, isOpen, toggle, close }: SidbarProps) {
-  const { breakpoints, transitions, palette } = useTheme();
-  const isXSmall = useMediaQuery(breakpoints.down("xs"));
-  const isSmall = useMediaQuery(breakpoints.down("sm"));
-  const variant = isXSmall ? "temporary" : "permanent";
-  const onItemClick = useCallback(() => {
-    if (isSmall || isXSmall) {
-      close();
-    }
-  }, [isXSmall, isSmall, close]);
-  const onClose = useCallback(() => toggle(), [toggle]);
-  const navLinkStyle = useCallback(
-    ({ isActive }) => {
-      const { secondary, text, background } = palette;
-      return isActive
-        ? {
-            color: text.primary,
-            textDecoration: "none",
-            backgroundImage: `linear-gradient(to right, ${secondary.main} 20%, ${background.default} 75%)`,
-          }
-        : { color: text.secondary };
-    },
-    [palette]
-  );
+export default function Sidebar({ children }: SidebarProps) {
+  const drawerOpen = useSelector(getSidebar);
 
   return (
     <Drawer
-      sx={{
-        ".MuiDrawer-paper": {
-          position: { xs: "absolute", sm: "relative" },
-          height: { xs: "100vh", sm: 1 },
-          overflowX: "hidden",
-          width: isOpen
-            ? DRAWER_WIDTH
-            : isSmall || isXSmall
-            ? 0
-            : CLOSED_DRAWER_WIDTH,
-          transition: transitions.create("width", {
-            easing: transitions.easing.sharp,
-            duration: transitions.duration.leavingScreen,
-          }),
-          backgroundColor: { xs: palette.background.paper, sm: "transparent" },
-          borderRight: "none",
-          zIndex: 1,
-          marginRight: 1,
-          border: { md: "none" },
-        },
+      {...{
+        open: drawerOpen,
+        onClose: () => dispatch(setSidebar(false)),
       }}
-      {...{ variant, onClose }}
     >
       <Box
         sx={{
           display: "flex",
           flexDirection: "column",
-          justifyContent: "flex-start",
-          marginTop: { xs: 0, md: 1 },
-          width: isOpen ? DRAWER_WIDTH : CLOSED_DRAWER_WIDTH,
+          width: { sm: 280, md: 350 },
         }}
       >
-        {items.map(({ name, icon, to }) => {
-          //conditional wrap
-          const menuItem = (
-            <MenuItem tabIndex={0}>
-              {icon && <ListItemIcon sx={{ minWidth: 5 }}>{icon}</ListItemIcon>}
-              {isOpen ? name : ""}
-            </MenuItem>
-          );
-          return (
-            <NavLink
-              style={navLinkStyle}
-              key={name}
-              onClick={onItemClick}
-              {...{ to }}
-            >
-              {isOpen ? (
-                menuItem
-              ) : (
-                <Tooltip title={name} placement="right">
-                  {menuItem}
-                </Tooltip>
-              )}
-            </NavLink>
-          );
-        })}
+        <Grid
+          container
+          sx={{
+            fontSize: 22,
+            padding: 1,
+            justifyContent: "space-between",
+          }}
+        >
+          <Typography sx={{ padding: 1 }} variant="h5">
+            Menu
+          </Typography>
+          <IconButton
+            title="Close menu"
+            size="large"
+            edge="start"
+            onClick={() => dispatch(setSidebar(false))}
+          >
+            <Close fontSize="medium" />
+          </IconButton>
+        </Grid>
+        <Box sx={{ overflowY: "auto" }}>{children}</Box>
       </Box>
     </Drawer>
   );

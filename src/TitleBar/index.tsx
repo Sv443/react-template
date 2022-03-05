@@ -25,16 +25,29 @@ export function TitleBar({ title }: TitleBarProps) {
           <IconButton
             size="large"
             edge="start"
-            aria-label="menu"
+            title="Open menu"
             onClick={() => dispatch(setSidebar(!sidebar))}
             sx={{ mr: 2 }}
           >
-            {sidebar ? <MenuOpen /> : <Menu />}
+            {sidebar ? (
+              <MenuOpen fontSize="medium" />
+            ) : (
+              <Menu fontSize="medium" />
+            )}
           </IconButton>
           <Typography noWrap={true} variant="h5">
             {title}
           </Typography>
-          <Button color="secondary">Yo</Button>
+          <Box
+            sx={{
+              flexDirection: "column",
+              justifyContent: "space-evenly",
+              textAlign: "right",
+            }}
+          >
+            <div>Top text</div>
+            <div>Bottom text</div>
+          </Box>
         </Toolbar>
       </AppBar>
     </Box>

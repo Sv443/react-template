@@ -13,11 +13,5 @@ TS React template using Vite & Material UI, originally based on [@pubcore/vite-m
 - eslint
 
 ### Installation
-
-```
-npx degit pubcore/vite-mui <my-project>
-cd <my-project>
-
-npm install
-npm run dev
-```
+1. Install dependencies: `npm i`
+2. Start development server with `npm run dev`
